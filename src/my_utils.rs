@@ -1,3 +1,4 @@
+use rand::Rng;
 use std::fmt;
 use std::io;
 
@@ -111,4 +112,17 @@ pub fn input_str() -> String {
     let mut x = String::new();
     io::stdin().read_line(&mut x).expect("Unable to read");
     x
+}
+
+pub fn random_numb() -> i32 {
+    let mut genrator: rand::prelude::ThreadRng = rand::thread_rng();
+    genrator.gen_range(0..100)
+}
+
+pub fn array_factory(siz: i32) -> Vec<i32> {
+    let mut v: Vec<i32> = vec![];
+    for _ in 0..siz {
+        v.push(random_numb());
+    }
+    v
 }
