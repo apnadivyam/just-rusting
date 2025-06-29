@@ -119,10 +119,45 @@ pub fn random_numb() -> i32 {
     genrator.gen_range(0..100)
 }
 
-pub fn array_factory(siz: i32) -> Vec<i32> {
+pub fn array_factory(siz: usize) -> Vec<i32> {
     let mut v: Vec<i32> = vec![];
     for _ in 0..siz {
         v.push(random_numb());
     }
     v
+}
+
+pub fn merge_sort(v: &mut Vec<i32>, l: usize, r: usize) {
+    if r - l < 2 {
+        return;
+    }
+    let mid = (l + r) / 2;
+    merge_sort(v, l, mid);
+    merge_sort(v, mid, r);
+    let mut i = l;
+    let mut j = mid;
+    let mut w: Vec<i32> = vec![];
+    while i < mid && j < r {
+        if v[i] > v[j] {
+            w.push(v[j]);
+            j += 1;
+        } else {
+            w.push(v[i]);
+            i += 1;
+        }
+    }
+    while i < mid {
+        w.push(v[i]);
+        i += 1;
+    }
+    while j < r {
+        w.push(v[j]);
+        j += 1;
+    }
+    i = 0;
+    println!("sorting... {:?}", w);
+    for x in w {
+        v[l + i] = x;
+        i += 1;
+    }
 }
