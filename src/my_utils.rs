@@ -161,3 +161,23 @@ pub fn merge_sort(v: &mut Vec<i32>, l: usize, r: usize) {
         i += 1;
     }
 }
+
+pub fn binary_search_array(v: &Vec<i32>) {
+    println!("Ok! What do you want to search");
+    let t = input_num();
+    let mut x = 0;
+    let mut y = v.len();
+    while x + 1 < y {
+        let mid = (x + y) >> 1;
+        if v[mid] > t {
+            y = mid;
+        } else {
+            x = mid;
+        }
+    }
+    if v[x] == t {
+        println!("Found {} at index {}", t, x);
+    } else {
+        println!("No such element in the array !!");
+    }
+}

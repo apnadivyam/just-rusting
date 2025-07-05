@@ -19,7 +19,7 @@ fn main() {
     7. Sort an array \n"
     );
     match my_utils::input_num() {
-        1 => test::ground(),
+        1 => test::test(),
         2 => game::guessing_game(),
         3 => temprature::converter(),
         4 => fibonacci::nth_fibonacci(),
